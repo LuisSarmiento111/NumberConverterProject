@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class BaseConverter {
     private String[] digits;
     private int base;
@@ -37,8 +39,16 @@ public class BaseConverter {
         return valid;
     }
 
-    public int convertBtoD(int number){
-        return convertToDecimal(number, 10);
+    public int convertToB(int number, int base){
+        return Integer.parseInt(convert(convertToDecimal(number, base), 2));
+    }
+
+    public int convertToO(int number, int base) {
+        return Integer.parseInt(convert(convertToDecimal(number, base), 8));
+    }
+
+    public String convertToH(int number, int base) {
+        return convert(convertToDecimal(number, base), 16);
     }
 
     public String getDigits() {
