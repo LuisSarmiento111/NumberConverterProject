@@ -1,9 +1,6 @@
-import java.net.Inet4Address;
-import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
-import java.util.Arrays;
 
-public class Test {
+public class ConverterRunner {
     public static void main(String[] args)
     {
         Scanner scanner = new Scanner(System.in);
@@ -32,7 +29,7 @@ public class Test {
                 System.out.print("Enter your number: ");
                 answer = scanner.nextLine();
             }
-            int number = Integer.parseInt(answer);
+            String number = answer;
             if (base != 2) {
                 System.out.println("Binary number: " + converter.convertToB(number,base));
             }

@@ -27,11 +27,16 @@ public class BaseConverter {
         return newNum;
     }
 
-    public int convertToDecimal(int number, int base) {
+    public int convertToDecimal(String number, int base) {
         int newNum = 0;
-        String numberAsString = number + "";
-        for (int i = numberAsString.length() - 1; i >= 0; i--) {
-            newNum += (Integer.parseInt(numberAsString.substring(i, i + 1)) * (int) Math.pow(base, numberAsString.length() - (1 + i)));
+        int numberAtIndex = 0;
+        for (int i = number.length() - 1; i >= 0; i--) {
+            for (int v = 0; v < digits.length; v++) {
+                if (digits[v].equals(number.substring(i, i + 1))) {
+                    numberAtIndex = v;
+                }
+            }
+            newNum += numberAtIndex * (int) Math.pow(base, number.length() - (1 + i));
         }
         return newNum;
     }
@@ -46,20 +51,20 @@ public class BaseConverter {
         return valid;
     }
 
-    public int convertToB(int number, int base){
-        return Integer.parseInt(convert(convertToDecimal(number, base), 2));
+    public String convertToB(String number, int base){
+        return convert(convertToDecimal(number, base), 2);
     }
 
-    public int convertToO(int number, int base) {
-        return Integer.parseInt(convert(convertToDecimal(number, base), 8));
+    public String convertToO(String number, int base) {
+        return convert(convertToDecimal(number, base), 8);
     }
 
-    public String convertToH(int number, int base) {
+    public String convertToH(String number, int base) {
         return convert(convertToDecimal(number, base), 16);
     }
 
-    public String getDigits() {
-        return digits[31];
+    public String[] getDigits() {
+        return digits;
     }
 }
 
