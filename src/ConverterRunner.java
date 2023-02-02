@@ -55,7 +55,7 @@ public class ConverterRunner {
             int number = Integer.parseInt(answer);
             System.out.print("Enter what base you would like to convert to (1-64): ");
             answer = scanner.nextLine();
-            while (Integer.parseInt(answer) > 64 && Integer.parseInt(answer) < 1) {
+            while (Integer.parseInt(answer) > 64 || Integer.parseInt(answer) < 1) {
                 System.out.println("That is an invalid base option");
                 System.out.print("Enter what base you would like to convert to (1-64): ");
                 answer = scanner.nextLine();
