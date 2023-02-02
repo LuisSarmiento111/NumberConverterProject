@@ -14,8 +14,15 @@ public class BaseConverter {
     public String convert(int number, int base) {
         String newNum = "";
         while (number != 0) {
-            newNum = (digits[number % base]) + newNum;
-            number /= base;
+            if (base == 1) {
+                newNum = "1" + newNum;
+                number--;
+            } else if (base == 0) {
+                newNum = "0";
+            } else {
+                newNum = (digits[number % base]) + newNum;
+                number /= base;
+            }
         }
         return newNum;
     }
